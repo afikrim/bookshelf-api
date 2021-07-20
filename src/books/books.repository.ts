@@ -1,14 +1,25 @@
 import { nanoid } from 'nanoid'
-import { Book, BookRequest, BookSimple } from './books.model'
+import { Book, BookQueryParams, BookRequest, BookSimple } from './books.model'
 
 import data from './books.data'
 
-const findAll = (): BookSimple[] => {
-  const books = data.map((d) => ({
-    id: d.id,
-    name: d.name,
-    publisher: d.publisher,
-  }))
+const findAll = (query: BookQueryParams): BookSimple[] => {
+  const books = data
+    .filter((d) => {
+      if (query.name)
+        return d.name.toLowerCase().indexOf(query.name.toLowerCase()) !== -1
+      if (query.reading)
+        return parseInt(query.reading) === 1 ? d.reading : !d.reading
+      if (query.finished)
+        return parseInt(query.finished) === 1 ? d.finished : !d.finished
+
+      return true
+    })
+    .map((d) => ({
+      id: d.id,
+      name: d.name,
+      publisher: d.publisher,
+    }))
 
   return books
 }

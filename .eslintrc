@@ -13,7 +13,8 @@
   "rules": {
     "prettier/prettier": "error",
     "import/extensions": ["off", "never"],
-    "arrow-body-style": "off"
+    "arrow-body-style": "off",
+    "radix": "off"
   },
   "settings": {
     "import/resolver": {

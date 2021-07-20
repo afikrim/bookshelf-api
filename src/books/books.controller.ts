@@ -4,10 +4,12 @@ import BadRequestException from '../utils/exceptions/BadRequestException'
 import NotFoundException from '../utils/exceptions/NotFoundExceptions'
 import BooksService from './books.service'
 
-import { BookRequest } from './books.model'
+import { BookQueryParams, BookRequest } from './books.model'
 
-const index = (_: Request, h: ResponseToolkit) => {
-  const data = BooksService.index()
+const index = (request: Request, h: ResponseToolkit) => {
+  const query = request.query as BookQueryParams
+
+  const data = BooksService.index(query)
 
   const response = h.response({
     status: 'success',

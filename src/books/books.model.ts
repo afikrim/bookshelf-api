@@ -29,3 +29,9 @@ export interface BookRequest {
   readPage: number
   reading: boolean
 }
+
+export interface BookQueryParams {
+  name?: string
+  reading?: string
+  finished?: string
+}

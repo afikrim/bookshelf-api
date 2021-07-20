@@ -1,9 +1,9 @@
 import NotFoundException from '../utils/exceptions/NotFoundExceptions'
-import { Book, BookRequest, BookSimple } from './books.model'
+import { Book, BookQueryParams, BookRequest, BookSimple } from './books.model'
 import BookRepository from './books.repository'
 
-const index = (): BookSimple[] => {
-  const books = BookRepository.findAll()
+const index = (query: BookQueryParams): BookSimple[] => {
+  const books = BookRepository.findAll(query)
 
   return books
 }
