@@ -14,5 +14,12 @@
     "prettier/prettier": "error",
     "import/extensions": ["off", "never"],
     "arrow-body-style": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".ts"]
+      }
+    }
   }
 }

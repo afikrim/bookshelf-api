@@ -1,5 +1,6 @@
 import Hapi from '@hapi/hapi'
 import dotenv from 'dotenv'
+import BookRoutes from './books/books.routes'
 
 dotenv.config()
 
@@ -7,7 +8,7 @@ const { HOST, PORT, APP_NAME, APP_VERSION } = process.env
 const init = async () => {
   const server = Hapi.server({
     host: HOST || '127.0.0.1',
-    port: PORT || '3000',
+    port: PORT || '5000',
     routes: {
       cors: {
         additionalHeaders: ['accept', 'content-type'],
@@ -16,6 +17,8 @@ const init = async () => {
       },
     },
   })
+
+  BookRoutes(server)
 
   server.route({
     method: 'GET',
